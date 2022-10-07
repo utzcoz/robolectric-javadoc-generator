@@ -17,9 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          name: robolectric/robolectric
+          repository: robolectric/robolectric
           ref: refs/tags/robolectric-4.9
-          fetch-depth: 0
           submodules: recursive
 
       - name: Set up JDK
