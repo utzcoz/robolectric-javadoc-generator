@@ -11,7 +11,7 @@ permissions:
   contents: read
 
 jobs:
-  check_aggregateDocs:
+  aggregateDocs:
     runs-on: ubuntu-18.04
 
     steps:
