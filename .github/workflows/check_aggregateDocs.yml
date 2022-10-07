@@ -1,0 +1,34 @@
+name: Generate javadoc for Robolectric release
+
+on:
+  push:
+    branches: [ main ]
+
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  check_aggregateDocs:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          name: robolectric/robolectric
+          ref: refs/tags/robolectric-4.9
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu' # zulu suports complete JDK list
+          java-version: 14
+
+      - uses: gradle/gradle-build-action@v2
+
+      - name: Run aggregateDocs
+        run: cd robolectric && SKIP_NATIVERUNTIME_BUILD=true ./gradlew clean aggregateDocs # building the native runtime is not required for checking javadoc
