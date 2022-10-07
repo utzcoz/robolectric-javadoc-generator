@@ -25,5 +25,8 @@ jobs:
 
       - uses: gradle/gradle-build-action@v2
 
+      - name: Download Robolectric 4.9
+        run: git clone --recurse-submodules -b robolectric-4.9 -single-branch https://github.com/robolectric/robolectric.git
+
       - name: Run aggregateDocs
         run: cd robolectric && SKIP_NATIVERUNTIME_BUILD=true ./gradlew clean aggregateDocs # building the native runtime is not required for checking javadoc
