@@ -30,3 +30,10 @@ jobs:
 
       - name: Run aggregateDocs
         run: cd robolectric && SKIP_NATIVERUNTIME_BUILD=true ./gradlew clean aggregateDocs # building the native runtime is not required for checking javadoc
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: robolectric-javadoc
+          path: |
+            robolectric/build/docs/javadoc
+            robolectric/build/docs/json
