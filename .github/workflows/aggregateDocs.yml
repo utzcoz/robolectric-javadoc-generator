@@ -21,12 +21,12 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'zulu' # zulu suports complete JDK list
-          java-version: 14
+          java-version: 17
 
       - uses: gradle/gradle-build-action@v2
 
-      - name: Download Robolectric 4.10
-        run: git clone -b robolectric-4.10 --single-branch https://github.com/robolectric/robolectric.git
+      - name: Download Robolectric 4.11.1
+        run: git clone -b robolectric-4.11.1 --single-branch https://github.com/robolectric/robolectric.git
 
       - name: Run aggregateDocs
         run: cd robolectric && ./gradlew clean aggregateDocs
