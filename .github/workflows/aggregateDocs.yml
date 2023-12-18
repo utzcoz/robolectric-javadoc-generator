@@ -31,7 +31,7 @@ jobs:
       - name: Run aggregateDocs
         run: cd robolectric && ./gradlew clean aggregateDocs
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: robolectric-javadoc
           path: |
